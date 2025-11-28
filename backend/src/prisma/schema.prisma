@@ -1,0 +1,52 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+}
+
+model Wedding {
+  id       Int     @id @default(autoincrement())
+  name     String
+  date     DateTime
+  location String
+  rsvpDeadline DateTime
+  guests   Guest[]
+  photos   Photo[]
+  stories  Story[]
+}
+
+model Guest {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String
+  rsvpStatus String
+  wedding   Wedding @relation(fields: [weddingId], references: [id])
+  weddingId Int
+}
+
+model Photo {
+  id       Int     @id @default(autoincrement())
+  url     String
+  caption String?
+  wedding   Wedding @relation(fields: [weddingId], references: [id])
+  weddingId Int
+}
+
+model Story {
+  id       Int     @id @default(autoincrement())
+  title    String
+  content  String
+  date     DateTime
+  wedding   Wedding @relation(fields: [weddingId], references: [id])
+  weddingId Int
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String
+  password String
+}
