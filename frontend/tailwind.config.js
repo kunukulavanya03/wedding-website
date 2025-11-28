@@ -1,0 +1,1 @@
+{"mode": "jit", "purge": ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"], "theme": {"extend": {"colors": {"primary": "rgba(37, 99, 235, 1)", "secondary": "rgba(16, 185, 129, 1)", "dark": "rgba(17, 24, 39, 1)", "light": "rgba(255, 255, 255, 1)"}}}}
